@@ -12,10 +12,10 @@ One of the best things you can do for your blog is to consistently optimize and 
 The goal of this plugin is to be the easiest and most intuitive optimization process for your blog. It simply optimizes your WordPress MySQL database with a click of a button and then lets you get back to writing!
 
 Features:
-It's intuitive! It'll let you know if you need a “tune up” by giving you a message that you should optimize. If not then you can just get back to writing!
+It's intuitive! It'll let you know if you need a "tune up" by giving you a message that you should optimize. If not then you can just get back to writing!
 One-click optimization! No need to jump into phpMyAdmin or anything like that!
 Shows you exactly the amount of space that can be optimized from your database. Optimize your tables, reduce overhead, and make it faster.
-You can ‘View Your Database' if you wish.
+You can 'View Your Database' if you wish.
 
 <a href="http://tentblogger.com/optimize-wordpress-database/" _target="_blank">Read More...</a>
 		
