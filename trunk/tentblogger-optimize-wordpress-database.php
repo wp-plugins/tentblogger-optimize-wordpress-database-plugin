@@ -3,7 +3,7 @@
 Plugin Name: TentBlogger Optimize WordPress Database Plugin
 Plugin URI: http://tentblogger.com/optimize-wordpress-database
 Description: One of the best things you can do for your blog is to consistently optimize and clean your WordPress database. This plugin does all the work for you!
-Version: 1.0
+Version: 2.0
 Author: TentBlogger
 Author URI: http://tentblogger.com
 License:
@@ -54,15 +54,18 @@ class TentBlogger_Optimize_WordPress_Database {
 	 * Adds the administration menu item to the WordPress administration menu.
 	 */
 	public function admin() {
-		if(function_exists('add_menu_page')) {
-			$this->load_file('tentblogger-optimize-wordpress-database-styles', '/tentblogger-optimize-wordpress-database-plugin/css/admin.css');
-			$this->load_file('tentblogger-optimize-wordpress-database-admin', '/tentblogger-optimize-wordpress-database-plugin/js/admin.js', true);
-			add_menu_page('Optimize WPDB', 'Optimize WPDB', 'administrator', 'tentblogger-optimize-wordpress-database-handle', array($this, 'display'));
-		} // end if
+  
+		$this->load_file('tentblogger-optimize-wordpress-database-admin', '/tentblogger-optimize-wordpress-database-plugin/js/admin.js', true);
+		
+    if(!$this->my_menu_exists('tentblogger-handle')) {
+      add_menu_page('TentBlogger', 'TentBlogger', 'administrator', 'tentblogger-handle', array($this, 'display'));
+    }
+    add_submenu_page('tentblogger-handle', 'TentBlogger', 'Optimize DB', 'administrator', 'tentblogger-db-handle', array($this, 'optimize_db_display'));
+    
 	} // end admin
 	
 	/**
-	 * Includes the actual plugin administration panel.
+	 * Includes the display for the base menu.
 	 */
 	public function display() {
 		if(is_admin()) {
@@ -70,6 +73,15 @@ class TentBlogger_Optimize_WordPress_Database {
 		} // end if
 	} // end display
 	
+  /**
+	 * Includes the display for this particular menu.
+	 */
+	public function optimize_db_display() {
+		if(is_admin()) {
+			include_once('tentblogger-optimize-wordpress-database-dashboard.php');
+		} // end if
+	} // end display
+  
 	/*--------------------------------------------*
 	 * Core Functions
 	 *---------------------------------------------*/	
@@ -181,7 +193,7 @@ class TentBlogger_Optimize_WordPress_Database {
 					</th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody id="the-list">
 				<?php
 				$sum = 0;
 				foreach ($results as $result) {
@@ -223,6 +235,30 @@ class TentBlogger_Optimize_WordPress_Database {
 		} // end if
 	} // end _load_file
 	
+  /**
+   * http://wordpress.stackexchange.com/questions/6311/how-to-check-if-an-admin-submenu-already-exists
+   */
+  private function my_menu_exists( $handle, $sub = false){
+    if( !is_admin() || (defined('DOING_AJAX') && DOING_AJAX) )
+      return false;
+    global $menu, $submenu;
+    $check_menu = $sub ? $submenu : $menu;
+    if( empty( $check_menu ) )
+      return false;
+    foreach( $check_menu as $k => $item ){
+      if( $sub ){
+        foreach( $item as $sm ){
+          if($handle == $sm[2])
+            return true;
+        }
+      } else {
+        if( $handle == $item[2] )
+          return true;
+      }
+    }
+    return false;
+  } // end my_menu_exists
+  
 } // TentBlogger_FeedBurner
 new TentBlogger_Optimize_WordPress_Database();
 ?>
