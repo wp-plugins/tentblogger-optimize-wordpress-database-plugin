@@ -2,8 +2,8 @@
 Contributors: tentblogger
 Tags: database, sql, optimization
 Requires at least: 3.0
-Tested up to: 3.2
-Stable tag: 2.1
+Tested up to: 3.3
+Stable tag: 2.2
 
 One of the best things you can do for your blog is to consistently optimize and clean your WordPress database. <a href="http://tentblogger.com/optimize-wordpress-database/">This plugin</a> does all the work for you!
 
@@ -31,6 +31,10 @@ You can 'View Your Database' if you wish.
 1. TentBlogger Optimize WordPress Database
 
 == Changelog ==
+
+= 2.2 -
+* Adding custom header image
+* 3.3 compatibility
 
 = 2.1 =
 * Resolving a repository conflict

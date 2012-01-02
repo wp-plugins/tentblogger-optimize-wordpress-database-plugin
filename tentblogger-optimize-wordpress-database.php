@@ -3,12 +3,12 @@
 Plugin Name: TentBlogger Optimize WordPress Database Plugin
 Plugin URI: http://tentblogger.com/optimize-wordpress-database
 Description: One of the best things you can do for your blog is to consistently optimize and clean your WordPress database. This plugin does all the work for you!
-Version: 2.1
+Version: 2.2
 Author: TentBlogger
 Author URI: http://tentblogger.com
 License:
 
-    Copyright 2011 TentBlogger (info@tentblogger.com)
+    Copyright 2011 - 2012 TentBlogger (info@tentblogger.com)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License, version 2, as 
